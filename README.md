@@ -8,10 +8,10 @@ Run:
 
 # Run
 
-`python benchmark.py --gpu_name "<GPU> --gpu <GPU_ID>"`
+`python benchmark.py --gpu_name "<GPU>" --gpu <GPU_ID>`
 
 * `--gpu_name <GPU>`: **mandatory**, the name of the gpu tested (e.g., "GTX 1080 TI", "RTX 2070")
-* `--gpu <GPU_ID>`: **optionnal**, GPU ID for CUDA_VISIBLE_DEVICES option
+* `--gpu <GPU_ID>`: **optionnal**, GPU ID for CUDA_VISIBLE_DEVICES option (default=0)
 
 Outputs a result file in ./res/
 
