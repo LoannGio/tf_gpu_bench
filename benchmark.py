@@ -49,12 +49,8 @@ train_history = model.fit(
     x=train_set[0],
     y=to_categorical(train_set[1]),
     batch_size=batch_size,
-    epochs=100,
-    validation_data=(val_set[0], to_categorical(val_set[1])),
-    callbacks=[
-        tf.keras.callbacks.EarlyStopping(monitor='val_categorical_crossentropy', min_delta=0, patience=15,
-                                         verbose=1, mode='auto', baseline=None)
-    ]
+    epochs=50,
+    validation_data=(val_set[0], to_categorical(val_set[1]))
 )
 end_timestamp = round(time.time(), 1)
 elapsed_time = round(end_timestamp - start_timestamp, 1)
