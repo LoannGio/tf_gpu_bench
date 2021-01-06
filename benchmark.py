@@ -7,23 +7,23 @@ import os
 import time
 import socket
 
-# parser = OptionParser()
-# parser.add_option("--gpu", dest="gpu", default="0")
-# parser.add_option("--gpu_name", dest="gpu_name")
+parser = OptionParser()
+parser.add_option("--gpu", dest="gpu", default="0")
+parser.add_option("--gpu_name", dest="gpu_name")
 
-# (options, args) = parser.parse_args(sys.argv)
-# print(options)
+(options, args) = parser.parse_args(sys.argv)
+print(options)
 
-# if(options.gpu_name is None):
-#     print("Please provide GPU name: --gpu_name")
-#     exit()
+if(options.gpu_name is None):
+    print("Please provide GPU name: --gpu_name")
+    #exit()
+    options.gpu_name = "DEBUGGING"
 
+# physical_devices = tf.config.experimental.list_physical_devices('GPU')
+# if len(physical_devices) > 0:
+#    tf.config.experimental.set_memory_growth(physical_devices[0], True)
 
-physical_devices = tf.config.experimental.list_physical_devices('GPU')
-if len(physical_devices) > 0:
-   tf.config.experimental.set_memory_growth(physical_devices[0], True)
-
-# os.environ["CUDA_VISIBLE_DEVICES"] = options.gpu
+os.environ["CUDA_VISIBLE_DEVICES"] = options.gpu
 
 batch_size = 16
 
