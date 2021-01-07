@@ -1,9 +1,6 @@
 # Install:
-Requirements: Python >= 3.6
+Coded and tested with Python3.8.5, tensorflow2.2.0 (GPU), CUDA10.1, CUDNN7.6.5
 
-Run:
-* `virtualenv . -p python3`
-* `source bin/activate`
 * `pip install -r requirements.txt`
 
 # Run
@@ -14,7 +11,8 @@ Run:
 * `--gpu <GPU_ID>`: **optionnal**, GPU ID for CUDA_VISIBLE_DEVICES option (default=0)
 
 Outputs a result file in ./res/
+Comparison plot in ./plots/
 
 # Publish
 
-Push your result file 
+Push your results file/plots
