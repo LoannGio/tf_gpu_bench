@@ -1,0 +1,7 @@
+{
+    "host": "thebeast-GE65-Raider-9SF",
+    "GPU": "GeForce RTX 2070",
+    "best_acc": 0.9873999953269958,
+    "best_crossentropy": 0.3269623816013336,
+    "performance_time": "400.2 seconds"
+}

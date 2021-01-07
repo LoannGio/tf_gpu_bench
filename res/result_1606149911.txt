@@ -1,1 +1,0 @@
-{'host': 'albatros', 'GPU': 'GTX 1080 Ti', 'best_acc': 0.9868999719619751, 'best_crossentropy': 0.33756282925605774, 'performance_time': '820.9 seconds'}

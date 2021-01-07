@@ -4,20 +4,29 @@ from tensorflow.keras.utils import to_categorical
 from optparse import OptionParser
 import sys
 import os
+import json
 import time
 import socket
+
+from displayResults import displayResults
 
 parser = OptionParser()
 parser.add_option("--gpu", dest="gpu", default="0")
 parser.add_option("--gpu_name", dest="gpu_name")
+parser.add_option("--host", dest="host_name")
 
 (options, args) = parser.parse_args(sys.argv)
 print(options)
 
+
 if(options.gpu_name is None):
     print("Please provide GPU name: --gpu_name")
-    #exit()
-    options.gpu_name = "DEBUGGING"
+    exit()
+    #options.gpu_name = "DEBUGGING"
+
+if(options.host_name is None):
+    options.host_name = socket.gethostname()
+
 
 # physical_devices = tf.config.experimental.list_physical_devices('GPU')
 # if len(physical_devices) > 0:
@@ -26,7 +35,6 @@ if(options.gpu_name is None):
 os.environ["CUDA_VISIBLE_DEVICES"] = options.gpu
 
 batch_size = 16
-
 
 def handmade_lenet():
     input = Input(shape=(28, 28))
@@ -59,15 +67,17 @@ train_history = model.fit(
 end_timestamp = round(time.time(), 1)
 elapsed_time = round(end_timestamp - start_timestamp, 1)
 
-
+print(train_history.history.keys())
 saveInfos = {
-    "host": socket.gethostname(),
+    "host": options.host_name,
     "GPU": options.gpu_name,
     "best_acc": max(train_history.history["val_accuracy"]),
     "best_crossentropy": max(train_history.history["val_categorical_crossentropy"]),
     "performance_time": str(elapsed_time) + " seconds"
     }
 
-with open("res/result_"+str(int(start_timestamp))+".txt", "w") as f:
-    f.write(str(saveInfos))
+with open("res/result_"+str(int(start_timestamp))+".json", "w") as f:
+    json.dump(saveInfos, f)
     f.close()
+
+displayResults("./res", "./plots")
